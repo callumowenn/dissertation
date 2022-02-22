@@ -6,7 +6,6 @@ export default function Background() {
   const router = useRouter();
   const { slug } = router.query;
 
-  console.log(router.asPath);
   return (
     <Box w="100vw" h="100vh" pos="fixed" top="0" zIndex="-1">
       <Center

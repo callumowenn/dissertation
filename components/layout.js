@@ -11,6 +11,10 @@ function Layout({ children }) {
     <>
       <Head>
         <title>Dissertation</title>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+        />
       </Head>
       <Bar />
       <Box w="100vw" minH="100vh">
