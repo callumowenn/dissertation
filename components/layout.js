@@ -10,7 +10,7 @@ function Layout({ children }) {
     <>
       <Bar />
       <Box w="100vw" minH="100vh">
-        {session.info.isLoggedIn ? <>{children}</> : <Login />}
+        {session.info.isLoggedIn ? children : <Login />}
       </Box>
       <Background />
     </>

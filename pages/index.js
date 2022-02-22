@@ -6,6 +6,7 @@ import {
   useSession,
 } from '@inrupt/solid-ui-react';
 import AddInterest from '../components/addInterest';
+import InterestList from '../components/interestList';
 
 function Home() {
   const { session } = useSession();
@@ -22,11 +23,11 @@ function Home() {
             'http://xmlns.com/foaf/0.1/name',
           ]}
         />
+        <InterestList />
+        <AddInterest />
       </CombinedDataProvider>
 
-      <AddInterest />
-
-      <Button mt="8" colorScheme="purple">
+      <Button mt="32" colorScheme="purple">
         <LogoutButton />
       </Button>
     </Center>
