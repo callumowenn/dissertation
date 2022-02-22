@@ -15,7 +15,7 @@ function Bar() {
       pb="calc(8px + env(safe-area-inset-bottom))"
       w="100vw"
       px="2"
-      py="2"
+      pt="2"
       alignItems="center"
       bg="black"
       zIndex={99}
