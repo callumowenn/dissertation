@@ -11,7 +11,7 @@ function Bar() {
   return (
     <Flex
       pos="fixed"
-      height="72px"
+      height="calc(72px + env(safe-area-inset-bottom))"
       pb="calc(12px + env(safe-area-inset-bottom))"
       bottom="0"
       w="100vw"
@@ -20,7 +20,6 @@ function Bar() {
       alignItems="center"
       bg="black"
       zIndex={99}
-      className="bar"
     >
       <IconButton
         borderRadius="full"
