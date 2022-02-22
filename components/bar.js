@@ -11,10 +11,12 @@ function Bar() {
   return (
     <Flex
       pos="fixed"
-      height="calc(72px + env(safe-area-inset-bottom))"
+      height="72px"
+      pb="calc(3px + env(safe-area-inset-bottom))"
       bottom="0"
       w="100vw"
-      p="3"
+      pt="3"
+      px="3"
       alignItems="center"
       bg="black"
       zIndex={99}
