@@ -1,21 +1,15 @@
-import { Button, Center } from '@chakra-ui/react';
-import {
-  CombinedDataProvider,
-  LogoutButton,
-  Text,
-  useSession,
-} from '@inrupt/solid-ui-react';
-import AddInterest from '../components/addInterest';
+import { CombinedDataProvider, Text, useSession } from '@inrupt/solid-ui-react';
 
 function Home() {
   const { session } = useSession();
   return (
-    <Center h="100vh" flexDirection="column">
+    <div>
       <CombinedDataProvider
         datasetUrl={session.info.webId}
         thingUrl={session.info.webId}
       >
         <span>You are logged in as: </span>
+        <br />
         <Text
           properties={[
             'http://www.w3.org/2006/vcard/ns#fn',
@@ -23,13 +17,7 @@ function Home() {
           ]}
         />
       </CombinedDataProvider>
-
-      <AddInterest />
-
-      <Button mt="8" colorScheme="purple">
-        <LogoutButton />
-      </Button>
-    </Center>
+    </div>
   );
 }
 
