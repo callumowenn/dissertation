@@ -17,6 +17,7 @@ function Bar() {
       alignItems="center"
       bg="black"
       zIndex={99}
+      className="bar"
     >
       <IconButton
         borderRadius="full"
