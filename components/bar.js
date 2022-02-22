@@ -12,7 +12,6 @@ function Bar() {
     <Flex
       pos="fixed"
       bottom="0"
-      height="calc(64px + env(safe-area-inset-bottom))"
       pb="calc(8px + env(safe-area-inset-bottom))"
       w="100vw"
       px="2"
