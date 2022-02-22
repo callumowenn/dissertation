@@ -11,25 +11,20 @@ function Bar() {
   return (
     <Flex
       pos="fixed"
-      height="calc(72px + env(safe-area-inset-bottom))"
-      pb="calc(12px + env(safe-area-inset-bottom))"
       bottom="0"
+      height="calc(64px + env(safe-area-inset-bottom))"
+      pb="calc(8px + env(safe-area-inset-bottom))"
       w="100vw"
-      pt="3"
-      px="3"
+      px="2"
+      py="2"
       alignItems="center"
       bg="black"
       zIndex={99}
     >
-      <IconButton
-        borderRadius="full"
-        size="lg"
-        bg="black"
-        icon={<SearchIcon />}
-      />
-      <Flex mx="3" grow="1" overflowX="scroll" pos="relative">
+      <IconButton borderRadius="full" bg="black" icon={<SearchIcon />} />
+      <Flex mx="1" grow="1" overflowX="scroll" pos="relative">
         <Flex overflowX="scroll">
-          <Flex ml="8" mr="8">
+          <Flex mx="8" my="0">
             {spaces.map((space) => (
               <SpaceSelector space={space} />
             ))}
@@ -59,12 +54,7 @@ function Bar() {
           {session.info.isLoggedIn ? (
             <Avatar name="Callum Owen" overflow="hidden" />
           ) : (
-            <IconButton
-              borderRadius="full"
-              size="lg"
-              bg="black"
-              icon={<FaUserAlt />}
-            />
+            <IconButton borderRadius="full" bg="black" icon={<FaUserAlt />} />
           )}
         </a>
       </Link>

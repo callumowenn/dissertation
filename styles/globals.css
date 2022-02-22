@@ -19,3 +19,8 @@ a {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
+
+.bar {
+  padding-bottom: 8px;
+  padding-bottom: env(safe-area-inset-bottom, 8px);
+}
