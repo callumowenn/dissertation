@@ -51,7 +51,7 @@ function Bar() {
       <Link href="/me">
         <a>
           {session.info.isLoggedIn ? (
-            <Avatar w="40px" h="40px" name="Callum Owen" overflow="hidden" />
+            <Avatar w="40px" h="40px" overflow="hidden" />
           ) : (
             <IconButton borderRadius="full" bg="black" icon={<FaUserAlt />} />
           )}

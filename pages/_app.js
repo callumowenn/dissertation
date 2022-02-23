@@ -6,15 +6,15 @@ import { ProvideInterests } from '../lib/interests';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider>
-      <SessionProvider>
+    <SessionProvider>
+      <ChakraProvider>
         <ProvideInterests>
           <Layout>
             <Component {...pageProps} />
           </Layout>
         </ProvideInterests>
-      </SessionProvider>
-    </ChakraProvider>
+      </ChakraProvider>
+    </SessionProvider>
   );
 }
 

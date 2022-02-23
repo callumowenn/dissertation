@@ -1,4 +1,4 @@
-import { Button, Center } from '@chakra-ui/react';
+import { Avatar, Button, Center, Text as ChakraText } from '@chakra-ui/react';
 import {
   CombinedDataProvider,
   LogoutButton,
@@ -16,19 +16,24 @@ function Me() {
         datasetUrl={session.info.webId}
         thingUrl={session.info.webId}
       >
-        <span>You are logged in as: </span>
-        <Text
-          properties={[
-            'http://www.w3.org/2006/vcard/ns#fn',
-            'http://xmlns.com/foaf/0.1/name',
-          ]}
+        <Avatar size="2xl" /> {/* unsure how to get name into simple string */}
+        <ChakraText mt="2" fontSize="3xl">
+          <Text
+            properties={[
+              'http://www.w3.org/2006/vcard/ns#fn',
+              'http://xmlns.com/foaf/0.1/name',
+            ]}
+          />
+        </ChakraText>
+        <Button my="2" colorScheme="purple">
+          <LogoutButton />
+        </Button>
+        <InterestList
+          datasetUrl={session.info.webId}
+          thingUrl={session.info.webId}
         />
-        <InterestList />
         <AddInterest />
       </CombinedDataProvider>
-      <Button mt="32" mb="64" colorScheme="purple">
-        <LogoutButton />
-      </Button>
     </Center>
   );
 }
