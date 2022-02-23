@@ -5,8 +5,9 @@ import {
   Text,
   useSession,
 } from '@inrupt/solid-ui-react';
-import AddInterest from '../../components/addInterest';
-import InterestList from '../../components/interestList';
+import GoalsList from '../components/goals/goalsList';
+import SpacesList from '../components/spaces/spacesList';
+import InterestsList from '../components/interests/interestsList';
 
 function Me() {
   const { session } = useSession();
@@ -16,7 +17,7 @@ function Me() {
         datasetUrl={session.info.webId}
         thingUrl={session.info.webId}
       >
-        <Avatar size="2xl" /> {/* unsure how to get name into simple string */}
+        <Avatar size="xl" bg="blackAlpha.500" />
         <ChakraText mt="2" fontSize="3xl">
           <Text
             properties={[
@@ -28,11 +29,18 @@ function Me() {
         <Button my="2" colorScheme="purple">
           <LogoutButton />
         </Button>
-        <InterestList
+        <SpacesList
           datasetUrl={session.info.webId}
           thingUrl={session.info.webId}
         />
-        <AddInterest />
+        <InterestsList
+          datasetUrl={session.info.webId}
+          thingUrl={session.info.webId}
+        />
+        <GoalsList
+          datasetUrl={session.info.webId}
+          thingUrl={session.info.webId}
+        />
       </CombinedDataProvider>
     </Center>
   );

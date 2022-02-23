@@ -6,9 +6,9 @@ import {
   Select,
 } from '@chakra-ui/react';
 import { Field, Form, Formik } from 'formik';
-import { useInterests } from '../lib/interests';
+import { useInterests } from '../../lib/interests';
 
-function AddInterest() {
+function AddInterestForm() {
   const { addInterest } = useInterests();
 
   return (
@@ -23,8 +23,7 @@ function AddInterest() {
           <Field name="interest">
             {({ field, form }) => (
               <FormControl
-                isRequired
-                mt={8}
+                mt="4"
                 isInvalid={form.errors.interest && form.touched.interest}
               >
                 <FormLabel htmlFor="interest">Interest</FormLabel>
@@ -32,13 +31,16 @@ function AddInterest() {
                   <option value="climbing">Climbing</option>
                   <option value="nature">Nature</option>
                   <option value="food">Food</option>
+                  <option value="space">Space</option>
+                  <option value="football">Football</option>
+                  <option value="travel">Travel</option>
                 </Select>
                 <FormErrorMessage>{form.errors.interest}</FormErrorMessage>
               </FormControl>
             )}
           </Field>
-          <Button mt="4" type="submit">
-            Add Interest
+          <Button colorScheme="blue" mt="4" type="submit">
+            Add
           </Button>
         </Form>
       )}
@@ -46,4 +48,4 @@ function AddInterest() {
   );
 }
 
-export default AddInterest;
+export default AddInterestForm;
