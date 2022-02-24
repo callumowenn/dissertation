@@ -1,10 +1,10 @@
 import { Flex, Text as ChakraText } from '@chakra-ui/react';
-import { useInterests } from '../../lib/interests';
+import { usePodInterests } from '../../lib/podInterests';
 import AddInterestButton from './addInterestButton';
 import Interest from './interest';
 
 function InterestsList() {
-  const { thingsArray } = useInterests();
+  const { interestThings } = usePodInterests();
 
   return (
     <Flex flexDirection="column" mt="4" w="100vw">
@@ -18,12 +18,12 @@ function InterestsList() {
           🌱 Interests{' '}
         </ChakraText>
         <ChakraText ml="auto" color="whiteAlpha.500" fontSize="xl">
-          {thingsArray.length}
+          {interestThings.length}
         </ChakraText>
       </Flex>
       <Flex w="100vw" overflowX="scroll">
-        <Flex mx="8" my="2">
-          {thingsArray?.map(({ thing }, index) => (
+        <Flex ml="8" my="2">
+          {interestThings?.map(({ thing }, index) => (
             <Interest thing={thing} index={index} />
           ))}
           <AddInterestButton />

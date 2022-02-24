@@ -1,6 +1,6 @@
 import { Center } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { getSpace } from '../spaces';
+import { getSpace } from '../utils/spaces';
 
 function Slug() {
   const router = useRouter();

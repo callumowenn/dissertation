@@ -1,6 +1,7 @@
 import { Center, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { slugify } from '../utils/spaces';
 
 function SpaceSelector({ space }) {
   const router = useRouter();
@@ -8,24 +9,26 @@ function SpaceSelector({ space }) {
   return (
     <Center
       bg={
-        router.asPath === `/${space.name.toLowerCase()}` ||
-        (space.name === 'Home' && router.asPath === '/')
+        router.asPath === `/${slugify(space.name)}`
           ? space.colour
           : `${space.colour}33`
       }
       color={
-        router.asPath === `/${space.name.toLowerCase()}` ||
-        (space.name === 'Home' && router.asPath === '/')
-          ? 'black'
-          : space.colour
+        router.asPath === `/${slugify(space.name)}` ? 'black' : space.colour
       }
       borderRadius="full"
       overflow="hidden"
       mr="2"
     >
-      <Link href={space.name === 'Home' ? '/' : space.name.toLowerCase()}>
+      <Link href={slugify(space.name)}>
         <a>
-          <Center py="3" px="3" pos="relative" overflow="hidden">
+          <Center
+            py="3"
+            px="3"
+            pos="relative"
+            overflow="hidden"
+            whiteSpace="nowrap"
+          >
             <Text zIndex="1" fontWeight="semibold" fontSize="sm">
               {space.name}
             </Text>

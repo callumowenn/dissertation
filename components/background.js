@@ -1,6 +1,6 @@
-import { Box, Center, Text } from '@chakra-ui/react';
+import { Center, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { getSpace } from '../spaces';
+import { getSpace } from '../utils/spaces';
 
 export default function Background() {
   const router = useRouter();

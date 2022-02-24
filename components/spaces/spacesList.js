@@ -1,22 +1,32 @@
-import { Box, Flex, Text as ChakraText } from '@chakra-ui/react';
-import AddGoalButton from './addSpaceButton';
+import { Flex, Text as ChakraText } from '@chakra-ui/react';
+import { usePodSpaces } from '../../lib/podSpaces';
+import AddSpaceButton from './addSpaceButton';
 import Space from './space';
 
 function SpacesList() {
+  const { spaceThings } = usePodSpaces();
+
   return (
     <Flex flexDirection="column" mt="4" w="100vw">
-      <Box px="8">
-        <ChakraText fontSize="2xl" fontWeight="bold">
-          {/* Spaces {thingsArray.length} */}
-          🪐 Spaces
+      <Flex px="8">
+        <ChakraText
+          fontSize="2xl"
+          fontWeight="bold"
+          display="flex"
+          alignItems="center"
+        >
+          🪐 Spaces{' '}
         </ChakraText>
-      </Box>
+        <ChakraText ml="auto" color="whiteAlpha.500" fontSize="xl">
+          {spaceThings.length}
+        </ChakraText>
+      </Flex>
       <Flex w="100vw" overflowX="scroll">
-        <Flex mx="8" my="2">
-          {/* {thingsArray?.map(({ thing }) => (
-            <Space keyThing={thing} thing={thing} />
-          ))} */}
-          <AddGoalButton />
+        <Flex ml="8" my="2">
+          {spaceThings?.map(({ thing }, index) => (
+            <Space thing={thing} index={index} />
+          ))}
+          <AddSpaceButton />
         </Flex>
       </Flex>
     </Flex>
@@ -24,14 +34,3 @@ function SpacesList() {
 }
 
 export default SpacesList;
-
-// <Table things={thingsArray}>
-//<TableColumn property={TEXT_PREDICATE} header="" />
-{
-  /* <TableColumn
-    property={TEXT_PREDICATE}
-    header=""
-    body={() => <DeleteButton />}
-  /> */
-}
-// </Table>

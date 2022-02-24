@@ -4,10 +4,15 @@ import { Avatar, Flex, IconButton } from '@chakra-ui/react';
 import SpaceSelector from './spaceSelector';
 import { useSession } from '@inrupt/solid-ui-react';
 import Link from 'next/link';
-import { spaces } from '../spaces';
+import { defaultSpaces } from '../utils/spaces';
+import { usePodProfile } from '../lib/podProfile';
+import { usePodSpaces } from '../lib/podSpaces';
 
 function Bar() {
   const { session } = useSession();
+  const { name } = usePodProfile();
+  const { spaces } = usePodSpaces();
+
   return (
     <Flex
       pos="fixed"
@@ -24,7 +29,7 @@ function Bar() {
       <Flex mx="1" grow="1" overflowX="scroll" pos="relative">
         <Flex overflowX="scroll">
           <Flex mx="8" my="0">
-            {spaces.map((space) => (
+            {defaultSpaces.concat(spaces).map((space) => (
               <SpaceSelector space={space} />
             ))}
           </Flex>
@@ -50,8 +55,8 @@ function Bar() {
 
       <Link href="/me">
         <a>
-          {session.info.isLoggedIn ? (
-            <Avatar w="40px" h="40px" bg="transparent" />
+          {session?.info?.isLoggedIn && name ? (
+            <Avatar w="40px" h="40px" bg="whiteAlpha.400" name={name} />
           ) : (
             <IconButton borderRadius="full" bg="black" icon={<FaUserAlt />} />
           )}

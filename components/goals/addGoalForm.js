@@ -3,41 +3,35 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Input,
   Select,
 } from '@chakra-ui/react';
 import { Field, Form, Formik } from 'formik';
-import { usePodInterests } from '../../lib/podInterests';
+import { usePodGoals } from '../../lib/podGoals';
 
-function AddInterestForm() {
-  const { addInterest } = usePodInterests();
+function AddGoal() {
+  const { addGoal } = usePodGoals();
 
   return (
     <Formik
-      initialValues={{ interest: '', emoji: '', colour: '' }}
-      onSubmit={({ interest, emoji, colour }) => {
-        addInterest(interest, emoji, colour);
-        console.log(interest, emoji, colour);
+      initialValues={{ goal: '', emoji: '', colour: '' }}
+      onSubmit={({ goal, emoji, colour }) => {
+        addGoal(goal, emoji, colour);
+        console.log(goal, emoji, colour);
       }}
     >
       {() => (
         <Form>
-          <Field name="interest">
+          <Field name="goal">
             {({ field, form }) => (
               <FormControl
                 isRequired
                 mt="4"
-                isInvalid={form.errors.interest && form.touched.interest}
+                isInvalid={form.errors.goal && form.touched.goal}
               >
-                <FormLabel htmlFor="interest">Interest</FormLabel>
-                <Select {...field} id="interest" placeholder="Select interest">
-                  <option value="Climbing">Climbing</option>
-                  <option value="Nature">Nature</option>
-                  <option value="Food">Food</option>
-                  <option value="Space">Space</option>
-                  <option value="Football">Football</option>
-                  <option value="Travel">Travel</option>
-                </Select>
-                <FormErrorMessage>{form.errors.interest}</FormErrorMessage>
+                <FormLabel htmlFor="goal">Goal</FormLabel>
+                <Input {...field} id="goal" placeholder="Select goal" />
+                <FormErrorMessage>{form.errors.goal}</FormErrorMessage>
               </FormControl>
             )}
           </Field>
@@ -90,4 +84,4 @@ function AddInterestForm() {
   );
 }
 
-export default AddInterestForm;
+export default AddGoal;

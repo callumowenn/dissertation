@@ -1,8 +1,8 @@
 import { Button } from '@chakra-ui/react';
-import { useInterests } from '../../lib/interests';
+import { usePodInterests } from '../../lib/podInterests';
 
 function DeleteInterestButton({ thing }) {
-  const { deleteInterest } = useInterests();
+  const { deleteInterest } = usePodInterests();
   return (
     <Button
       size="xs"

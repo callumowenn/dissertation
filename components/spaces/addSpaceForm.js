@@ -3,41 +3,35 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Input,
   Select,
 } from '@chakra-ui/react';
 import { Field, Form, Formik } from 'formik';
-import { usePodInterests } from '../../lib/podInterests';
+import { usePodSpaces } from '../../lib/podSpaces';
 
-function AddInterestForm() {
-  const { addInterest } = usePodInterests();
+function AddSpace() {
+  const { addSpace } = usePodSpaces();
 
   return (
     <Formik
-      initialValues={{ interest: '', emoji: '', colour: '' }}
-      onSubmit={({ interest, emoji, colour }) => {
-        addInterest(interest, emoji, colour);
-        console.log(interest, emoji, colour);
+      initialValues={{ space: '', emoji: '', colour: '' }}
+      onSubmit={({ space, emoji, colour }) => {
+        addSpace(space, emoji, colour);
+        console.log(space, emoji, colour);
       }}
     >
       {() => (
         <Form>
-          <Field name="interest">
+          <Field name="space">
             {({ field, form }) => (
               <FormControl
                 isRequired
                 mt="4"
-                isInvalid={form.errors.interest && form.touched.interest}
+                isInvalid={form.errors.space && form.touched.space}
               >
-                <FormLabel htmlFor="interest">Interest</FormLabel>
-                <Select {...field} id="interest" placeholder="Select interest">
-                  <option value="Climbing">Climbing</option>
-                  <option value="Nature">Nature</option>
-                  <option value="Food">Food</option>
-                  <option value="Space">Space</option>
-                  <option value="Football">Football</option>
-                  <option value="Travel">Travel</option>
-                </Select>
-                <FormErrorMessage>{form.errors.interest}</FormErrorMessage>
+                <FormLabel htmlFor="space">Space</FormLabel>
+                <Input {...field} id="space" placeholder="Select space" />
+                <FormErrorMessage>{form.errors.space}</FormErrorMessage>
               </FormControl>
             )}
           </Field>
@@ -90,4 +84,4 @@ function AddInterestForm() {
   );
 }
 
-export default AddInterestForm;
+export default AddSpace;

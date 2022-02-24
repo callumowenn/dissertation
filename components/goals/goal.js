@@ -1,26 +1,35 @@
-import { Button, Text as ChakraText } from '@chakra-ui/react';
-import { Text } from '@inrupt/solid-ui-react';
+import { Button, Center, Text } from '@chakra-ui/react';
 import { useState } from 'react';
-// import DeleteInterestButton from './deleteInterestButton';
+import { usePodGoals } from '../../lib/podGoals';
+import DeleteGoalButton from './deleteGoalButton';
 
-const TEXT_PREDICATE = 'http://schema.org/text';
-
-function Goal({ keyThing, thing }) {
+function Goal({ thing, index }) {
   const [clicked, setClicked] = useState(false);
+  const { goals } = usePodGoals();
+  const goal = goals[index];
 
   return (
     <Button
-      key={keyThing.url}
+      key={index}
       mr="2"
-      bg="blackAlpha.400"
+      bg={goal.colour}
+      color="black"
+      _hover=""
+      _active=""
       p="8"
       borderRadius="2xl"
+      overflow="hidden"
       onClick={() => setClicked(!clicked)}
     >
-      <ChakraText color="whiteAlpha.700" fontWeight="semibold">
-        <Text thing={thing} property={TEXT_PREDICATE} />
-      </ChakraText>
-      {/* {clicked ? <DeleteInterestButton thing={thing} /> : null} */}
+      <Center pos="relative">
+        <Text zIndex="1" fontWeight="semibold">
+          {goal.name}
+        </Text>
+        <Text pos="absolute" right="0" opacity="0.2" fontSize="8xl">
+          {goal.emoji}
+        </Text>
+      </Center>
+      {clicked ? <DeleteGoalButton thing={thing} /> : null}
     </Button>
   );
 }

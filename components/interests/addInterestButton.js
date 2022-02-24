@@ -21,6 +21,7 @@ function AddInterestButton() {
         bg="blackAlpha.400"
         color="whiteAlpha.700"
         p="8"
+        mr="8"
         borderRadius="2xl"
         onClick={onOpen}
         icon={<AddIcon />}

@@ -1,4 +1,5 @@
 import { AddIcon } from '@chakra-ui/icons';
+import AddSpaceForm from './addSpaceForm';
 import {
   Modal,
   IconButton,
@@ -20,6 +21,7 @@ function AddSpaceButton() {
         bg="blackAlpha.400"
         color="whiteAlpha.700"
         p="8"
+        mr="8"
         borderRadius="2xl"
         onClick={onOpen}
         icon={<AddIcon />}
@@ -30,7 +32,9 @@ function AddSpaceButton() {
         <ModalContent>
           <ModalHeader>Add Space</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>Add Space</ModalBody>
+          <ModalBody>
+            <AddSpaceForm />
+          </ModalBody>
           <ModalFooter>
             <Button variant="ghost" onClick={onClose}>
               Close

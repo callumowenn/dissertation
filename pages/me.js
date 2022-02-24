@@ -10,11 +10,11 @@ function Me() {
 
   return (
     <Center minH="100vh" py="16" flexDirection="column">
-      <Avatar size="xl" name={name} />
+      <Avatar size="xl" bg="whiteAlpha.400" name={name} />
       <Text mt="2" fontSize="3xl">
         {name}
       </Text>
-      <Button my="2" colorScheme="purple">
+      <Button my="2" colorScheme="purple" size="sm">
         <LogoutButton />
       </Button>
       <SpacesList />

@@ -1,21 +1,31 @@
-import { Box, Flex, Text as ChakraText } from '@chakra-ui/react';
+import { Flex, Text as ChakraText } from '@chakra-ui/react';
+import { usePodGoals } from '../../lib/podGoals';
 import AddGoalButton from './addGoalButton';
 import Goal from './goal';
 
 function GoalsList() {
+  const { goalThings } = usePodGoals();
+
   return (
     <Flex flexDirection="column" mt="4" w="100vw">
-      <Box px="8">
-        <ChakraText fontSize="2xl" fontWeight="bold">
-          {/* Goals {thingsArray.length} */}
-          🌟 Goals
+      <Flex px="8">
+        <ChakraText
+          fontSize="2xl"
+          fontWeight="bold"
+          display="flex"
+          alignItems="center"
+        >
+          🌟 Goals{' '}
         </ChakraText>
-      </Box>
+        <ChakraText ml="auto" color="whiteAlpha.500" fontSize="xl">
+          {goalThings.length}
+        </ChakraText>
+      </Flex>
       <Flex w="100vw" overflowX="scroll">
-        <Flex mx="8" my="2">
-          {/* {thingsArray?.map(({ thing }) => (
-            <Goal keyThing={thing} thing={thing} />
-          ))} */}
+        <Flex ml="8" my="2">
+          {goalThings?.map(({ thing }, index) => (
+            <Goal thing={thing} index={index} />
+          ))}
           <AddGoalButton />
         </Flex>
       </Flex>
@@ -24,14 +34,3 @@ function GoalsList() {
 }
 
 export default GoalsList;
-
-// <Table things={thingsArray}>
-//<TableColumn property={TEXT_PREDICATE} header="" />
-{
-  /* <TableColumn
-    property={TEXT_PREDICATE}
-    header=""
-    body={() => <DeleteButton />}
-  /> */
-}
-// </Table>

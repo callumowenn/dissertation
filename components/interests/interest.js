@@ -1,13 +1,12 @@
 import { Button, Center, Text } from '@chakra-ui/react';
 import { useState } from 'react';
-import { useInterests } from '../../lib/interests';
+import { usePodInterests } from '../../lib/podInterests';
 import DeleteInterestButton from './deleteInterestButton';
 
 function Interest({ thing, index }) {
   const [clicked, setClicked] = useState(false);
-  const { formattedInterests } = useInterests();
-
-  const interest = formattedInterests[index];
+  const { interests } = usePodInterests();
+  const interest = interests[index];
 
   return (
     <Button

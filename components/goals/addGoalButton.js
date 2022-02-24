@@ -1,4 +1,5 @@
 import { AddIcon } from '@chakra-ui/icons';
+import AddGoalForm from './addGoalForm';
 import {
   Modal,
   IconButton,
@@ -20,6 +21,7 @@ function AddGoalButton() {
         bg="blackAlpha.400"
         color="whiteAlpha.700"
         p="8"
+        mr="8"
         borderRadius="2xl"
         onClick={onOpen}
         icon={<AddIcon />}
@@ -30,7 +32,9 @@ function AddGoalButton() {
         <ModalContent>
           <ModalHeader>Add Goal</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>Add Goal</ModalBody>
+          <ModalBody>
+            <AddGoalForm />
+          </ModalBody>
           <ModalFooter>
             <Button variant="ghost" onClick={onClose}>
               Close
