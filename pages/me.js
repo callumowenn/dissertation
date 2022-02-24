@@ -1,47 +1,25 @@
-import { Avatar, Button, Center, Text as ChakraText } from '@chakra-ui/react';
-import {
-  CombinedDataProvider,
-  LogoutButton,
-  Text,
-  useSession,
-} from '@inrupt/solid-ui-react';
+import { Avatar, Button, Center, Text } from '@chakra-ui/react';
+import { LogoutButton } from '@inrupt/solid-ui-react';
 import GoalsList from '../components/goals/goalsList';
 import SpacesList from '../components/spaces/spacesList';
 import InterestsList from '../components/interests/interestsList';
+import { usePodProfile } from '../lib/podProfile';
 
 function Me() {
-  const { session } = useSession();
+  const { name } = usePodProfile();
+
   return (
     <Center minH="100vh" py="16" flexDirection="column">
-      <CombinedDataProvider
-        datasetUrl={session.info.webId}
-        thingUrl={session.info.webId}
-      >
-        <Avatar size="xl" bg="blackAlpha.500" />
-        <ChakraText mt="2" fontSize="3xl">
-          <Text
-            properties={[
-              'http://www.w3.org/2006/vcard/ns#fn',
-              'http://xmlns.com/foaf/0.1/name',
-            ]}
-          />
-        </ChakraText>
-        <Button my="2" colorScheme="purple">
-          <LogoutButton />
-        </Button>
-        <SpacesList
-          datasetUrl={session.info.webId}
-          thingUrl={session.info.webId}
-        />
-        <InterestsList
-          datasetUrl={session.info.webId}
-          thingUrl={session.info.webId}
-        />
-        <GoalsList
-          datasetUrl={session.info.webId}
-          thingUrl={session.info.webId}
-        />
-      </CombinedDataProvider>
+      <Avatar size="xl" name={name} />
+      <Text mt="2" fontSize="3xl">
+        {name}
+      </Text>
+      <Button my="2" colorScheme="purple">
+        <LogoutButton />
+      </Button>
+      <SpacesList />
+      <InterestsList />
+      <GoalsList />
     </Center>
   );
 }

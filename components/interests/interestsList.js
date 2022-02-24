@@ -23,8 +23,8 @@ function InterestsList() {
       </Flex>
       <Flex w="100vw" overflowX="scroll">
         <Flex mx="8" my="2">
-          {thingsArray?.map(({ thing }) => (
-            <Interest keyThing={thing} thing={thing} />
+          {thingsArray?.map(({ thing }, index) => (
+            <Interest thing={thing} index={index} />
           ))}
           <AddInterestButton />
         </Flex>
@@ -34,14 +34,3 @@ function InterestsList() {
 }
 
 export default InterestsList;
-
-// <Table things={thingsArray}>
-//<TableColumn property={TEXT_PREDICATE} header="" />
-{
-  /* <TableColumn
-    property={TEXT_PREDICATE}
-    header=""
-    body={() => <DeleteButton />}
-  /> */
-}
-// </Table>
