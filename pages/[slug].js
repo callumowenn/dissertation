@@ -55,7 +55,7 @@ function Slug() {
                 opacity: 1,
               }}
               m="4"
-              w="40"
+              w="32"
               src={image.urls.small}
               alt={image.description}
             />
