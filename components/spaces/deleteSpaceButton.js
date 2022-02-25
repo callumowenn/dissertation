@@ -1,16 +1,19 @@
+import { DeleteIcon } from '@chakra-ui/icons';
 import { Button } from '@chakra-ui/react';
 import { usePodSpaces } from '../../lib/podSpaces';
 
-function DeleteSpaceButton({ thing }) {
+function DeleteSpaceButton({ thing, onClose }) {
   const { deleteSpace } = usePodSpaces();
   return (
     <Button
-      size="xs"
-      ml="2"
       colorScheme="red"
-      onClick={() => deleteSpace(thing)}
+      leftIcon={<DeleteIcon />}
+      onClick={() => {
+        onClose();
+        deleteSpace(thing);
+      }}
     >
-      Delete
+      Delete Space
     </Button>
   );
 }

@@ -10,7 +10,6 @@ function Interest({ thing, index }) {
 
   return (
     <Button
-      key={index}
       mr="2"
       bg={interest.colour}
       color="black"

@@ -5,6 +5,7 @@ import Space from './space';
 
 function SpacesList() {
   const { spaceThings } = usePodSpaces();
+  console.log(spaceThings);
 
   return (
     <Flex flexDirection="column" mt="4" w="100vw">
@@ -24,7 +25,7 @@ function SpacesList() {
       <Flex w="100vw" overflowX="scroll">
         <Flex ml="8" my="2">
           {spaceThings?.map(({ thing }, index) => (
-            <Space thing={thing} index={index} />
+            <Space thing={thing} key={index} index={index} />
           ))}
           <AddSpaceButton />
         </Flex>

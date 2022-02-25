@@ -24,7 +24,7 @@ function GoalsList() {
       <Flex w="100vw" overflowX="scroll">
         <Flex ml="8" my="2">
           {goalThings?.map(({ thing }, index) => (
-            <Goal thing={thing} index={index} />
+            <Goal thing={thing} key={index} index={index} />
           ))}
           <AddGoalButton />
         </Flex>

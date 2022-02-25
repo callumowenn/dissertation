@@ -3,6 +3,7 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Input,
   Select,
 } from '@chakra-ui/react';
 import { Field, Form, Formik } from 'formik';
@@ -29,14 +30,7 @@ function AddInterestForm() {
                 isInvalid={form.errors.interest && form.touched.interest}
               >
                 <FormLabel htmlFor="interest">Interest</FormLabel>
-                <Select {...field} id="interest" placeholder="Select interest">
-                  <option value="Climbing">Climbing</option>
-                  <option value="Nature">Nature</option>
-                  <option value="Food">Food</option>
-                  <option value="Space">Space</option>
-                  <option value="Football">Football</option>
-                  <option value="Travel">Travel</option>
-                </Select>
+                <Input {...field} id="interest" placeholder="e.g. Climbing" />
                 <FormErrorMessage>{form.errors.interest}</FormErrorMessage>
               </FormControl>
             )}
@@ -49,14 +43,7 @@ function AddInterestForm() {
                 isInvalid={form.errors.emoji && form.touched.emoji}
               >
                 <FormLabel htmlFor="emoji">Emoji</FormLabel>
-                <Select {...field} id="emoji" placeholder="Select emoji">
-                  <option value="🧗">🧗</option>
-                  <option value="🌱">🌱</option>
-                  <option value="🥗">🥗</option>
-                  <option value="🚀">🚀</option>
-                  <option value="⚽️">⚽️</option>
-                  <option value="🗺">🗺</option>
-                </Select>
+                <Input {...field} id="interest" placeholder="e.g. 🧗" />
                 <FormErrorMessage>{form.errors.emoji}</FormErrorMessage>
               </FormControl>
             )}

@@ -10,7 +10,6 @@ function Goal({ thing, index }) {
 
   return (
     <Button
-      key={index}
       mr="2"
       bg={goal.colour}
       color="black"

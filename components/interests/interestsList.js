@@ -24,7 +24,7 @@ function InterestsList() {
       <Flex w="100vw" overflowX="scroll">
         <Flex ml="8" my="2">
           {interestThings?.map(({ thing }, index) => (
-            <Interest thing={thing} index={index} />
+            <Interest thing={thing} key={index} index={index} />
           ))}
           <AddInterestButton />
         </Flex>

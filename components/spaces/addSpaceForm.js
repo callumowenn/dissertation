@@ -8,16 +8,24 @@ import {
 } from '@chakra-ui/react';
 import { Field, Form, Formik } from 'formik';
 import { usePodSpaces } from '../../lib/podSpaces';
+import { usePodInterests } from '../../lib/podInterests';
 
-function AddSpace() {
+function AddSpaceForm({ space, update }) {
   const { addSpace } = usePodSpaces();
+  const { interests } = usePodInterests();
 
   return (
     <Formik
-      initialValues={{ space: '', emoji: '', colour: '' }}
-      onSubmit={({ space, emoji, colour }) => {
-        addSpace(space, emoji, colour);
-        console.log(space, emoji, colour);
+      initialValues={{
+        space: space?.name ?? '',
+        emoji: space?.emoji ?? '',
+        colour: space?.colour ?? '',
+        interest: space?.interest ?? '',
+      }}
+      onSubmit={({ space, emoji, colour, interest }) => {
+        update
+          ? console.log('update!')
+          : addSpace(space, emoji, colour, interest);
       }}
     >
       {() => (
@@ -29,8 +37,12 @@ function AddSpace() {
                 mt="4"
                 isInvalid={form.errors.space && form.touched.space}
               >
-                <FormLabel htmlFor="space">Space</FormLabel>
-                <Input {...field} id="space" placeholder="Select space" />
+                <FormLabel htmlFor="space">Name</FormLabel>
+                <Input
+                  {...field}
+                  id="space"
+                  placeholder="e.g. My Favourite Space"
+                />
                 <FormErrorMessage>{form.errors.space}</FormErrorMessage>
               </FormControl>
             )}
@@ -43,14 +55,7 @@ function AddSpace() {
                 isInvalid={form.errors.emoji && form.touched.emoji}
               >
                 <FormLabel htmlFor="emoji">Emoji</FormLabel>
-                <Select {...field} id="emoji" placeholder="Select emoji">
-                  <option value="🧗">🧗</option>
-                  <option value="🌱">🌱</option>
-                  <option value="🥗">🥗</option>
-                  <option value="🚀">🚀</option>
-                  <option value="⚽️">⚽️</option>
-                  <option value="🗺">🗺</option>
-                </Select>
+                <Input {...field} id="emoji" placeholder="Enter emoji..." />
                 <FormErrorMessage>{form.errors.emoji}</FormErrorMessage>
               </FormControl>
             )}
@@ -75,8 +80,26 @@ function AddSpace() {
               </FormControl>
             )}
           </Field>
-          <Button colorScheme="blue" mt="4" type="submit">
-            Add
+          <Field name="interest">
+            {({ field, form }) => (
+              <FormControl
+                isRequired
+                mt="4"
+                isInvalid={form.errors.interest && form.touched.interest}
+              >
+                <FormLabel htmlFor="interest">Interest</FormLabel>
+                <Select {...field} id="interest" placeholder="Select interest">
+                  {interests.map((interest) => (
+                    <option value={interest.name}>{interest.name}</option>
+                  ))}
+                </Select>
+                <FormErrorMessage>{form.errors.interest}</FormErrorMessage>
+              </FormControl>
+            )}
+          </Field>
+
+          <Button colorScheme={update ? 'green' : 'blue'} mt="4" type="submit">
+            {update ? 'Update' : 'Add'}
           </Button>
         </Form>
       )}
@@ -84,4 +107,4 @@ function AddSpace() {
   );
 }
 
-export default AddSpace;
+export default AddSpaceForm;

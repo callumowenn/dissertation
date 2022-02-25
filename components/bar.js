@@ -1,10 +1,9 @@
 import { SearchIcon } from '@chakra-ui/icons';
-import { FaUserAlt } from 'react-icons/fa';
+import { FaHome, FaSearch, FaUserAlt } from 'react-icons/fa';
 import { Avatar, Flex, IconButton } from '@chakra-ui/react';
 import SpaceSelector from './spaceSelector';
 import { useSession } from '@inrupt/solid-ui-react';
 import Link from 'next/link';
-import { defaultSpaces } from '../utils/spaces';
 import { usePodProfile } from '../lib/podProfile';
 import { usePodSpaces } from '../lib/podSpaces';
 
@@ -25,11 +24,16 @@ function Bar() {
       bg="black"
       zIndex={99}
     >
-      <IconButton borderRadius="full" bg="black" icon={<SearchIcon />} />
+      <IconButton borderRadius="full" bg="black" icon={<FaSearch />} />
+      <Link href="/">
+        <a>
+          <IconButton ml="1" borderRadius="full" bg="black" icon={<FaHome />} />
+        </a>
+      </Link>
       <Flex mx="1" grow="1" overflowX="scroll" pos="relative">
         <Flex overflowX="scroll">
           <Flex mx="8" my="0">
-            {defaultSpaces.concat(spaces).map((space) => (
+            {spaces.map((space) => (
               <SpaceSelector space={space} />
             ))}
           </Flex>

@@ -16,10 +16,15 @@ function Layout({ children }) {
           content="width=device-width, initial-scale=1.0, viewport-fit=cover"
         />
       </Head>
-      <Bar />
-      <Box w="100vw" minH="100vh">
-        {session?.info?.isLoggedIn ? children : <Login />}
-      </Box>
+      {session?.info?.isLoggedIn ? (
+        <>
+          <Bar />
+          {children}
+        </>
+      ) : (
+        <Login />
+      )}
+
       <Background />
     </>
   );
