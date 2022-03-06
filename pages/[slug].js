@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Image } from '@chakra-ui/react';
+import { Center, Image } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { getSpace } from '../utils/spaces';
@@ -9,24 +9,56 @@ function Slug() {
   const [images, setImages] = useState([]);
   const space = getSpace(slug);
 
+  console.log(space);
+
   useEffect(() => {
-    fetch(
-      `https://api.unsplash.com/search/photos/?client_id=__hsJ7lBhDSp2PtHtz0WKN5FERm5ddGU0yAOBilnkQk&query=${space.interest}`
-    )
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw response;
-      })
-      .then((data) => {
-        console.log(data);
-        setImages(data.results);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    space?.interests.forEach((interest, index) => {
+      fetch(
+        `https://api.unsplash.com/search/photos/?client_id=__hsJ7lBhDSp2PtHtz0WKN5FERm5ddGU0yAOBilnkQk&query=${interest}`
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw response;
+        })
+        .then((data) => {
+          console.log(data);
+          data.results.splice(Math.ceil(space.weightings[index] / 10));
+          console.log(data.results);
+          setImages((state) => {
+            const list = [...state, ...data.results];
+            return list;
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    });
+    return () => {
+      setImages([]);
+    };
   }, [router.asPath]);
+
+  function shuffle(array) {
+    let currentIndex = array.length,
+      randomIndex;
+
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+
+    return array;
+  }
 
   return (
     <Center
@@ -45,7 +77,7 @@ function Slug() {
         transform="translate(-50%, -50%)"
       >
         <Center h="100vh" w="100vw" overflow="scroll" py="24" flexWrap="wrap">
-          {images?.map((image) => (
+          {shuffle(images)?.map((image) => (
             <Image
               borderRadius="2xl"
               opacity="0.4"
@@ -56,8 +88,8 @@ function Slug() {
               }}
               m="4"
               w="32"
-              src={image.urls.small}
-              alt={image.description}
+              src={image?.urls?.small}
+              alt={image?.description}
             />
           ))}
         </Center>

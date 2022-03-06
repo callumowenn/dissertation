@@ -30,7 +30,7 @@ function AddGoal() {
                 isInvalid={form.errors.goal && form.touched.goal}
               >
                 <FormLabel htmlFor="goal">Goal</FormLabel>
-                <Input {...field} id="goal" placeholder="Select goal" />
+                <Input {...field} id="goal" placeholder="E.g. Learn Spanish" />
                 <FormErrorMessage>{form.errors.goal}</FormErrorMessage>
               </FormControl>
             )}
@@ -43,14 +43,7 @@ function AddGoal() {
                 isInvalid={form.errors.emoji && form.touched.emoji}
               >
                 <FormLabel htmlFor="emoji">Emoji</FormLabel>
-                <Select {...field} id="emoji" placeholder="Select emoji">
-                  <option value="🧗">🧗</option>
-                  <option value="🌱">🌱</option>
-                  <option value="🥗">🥗</option>
-                  <option value="🚀">🚀</option>
-                  <option value="⚽️">⚽️</option>
-                  <option value="🗺">🗺</option>
-                </Select>
+                <Input {...field} id="emoji" placeholder="e.g. 🇪🇸" />
                 <FormErrorMessage>{form.errors.emoji}</FormErrorMessage>
               </FormControl>
             )}
