@@ -28,7 +28,7 @@ function AddInterestButton() {
       />
       {/* popup modal to add interest */}
       <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
+        <ModalOverlay backdropFilter="blur(10px)" />
         <ModalContent>
           <ModalHeader>Add Interest</ModalHeader>
           <ModalCloseButton />

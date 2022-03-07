@@ -69,42 +69,42 @@ export async function getOrCreateSpacesList(containerUri, fetch) {
           fetch,
         }
       );
+      return spacesList;
       // add default spaces
-      spacesToReturn = await addDefaultSpaces(spacesList, fetch);
-      return spacesToReturn;
+      // const spacesToReturn = await addDefaultSpaces(spacesList, fetch);
     }
   }
 }
-async function addDefaultSpaces(spacesList, fetch) {
-  const indexUrl = getSourceUrl(spacesList);
-  const defaultSpaceOne = addDefaultSpace('Home', '🏡', '#4CEA89');
-  const defaultSpaceTwo = addDefaultSpace('Goals', '🏆', '#F6FF0D');
-  const updatedSpacesList = setThing(
-    setThing(spacesList, defaultSpaceOne),
-    defaultSpaceTwo
-  );
-  const updatedDataset = await saveSolidDatasetAt(indexUrl, updatedSpacesList, {
-    fetch,
-  });
-  return updatedDataset;
-}
+// async function addDefaultSpaces(spacesList, fetch) {
+//   const indexUrl = getSourceUrl(spacesList);
+//   const defaultSpaceOne = addDefaultSpace('Home', '🏡', '#4CEA89');
+//   const defaultSpaceTwo = addDefaultSpace('Goals', '🏆', '#F6FF0D');
+//   const updatedSpacesList = setThing(
+//     setThing(spacesList, defaultSpaceOne),
+//     defaultSpaceTwo
+//   );
+//   const updatedDataset = await saveSolidDatasetAt(indexUrl, updatedSpacesList, {
+//     fetch,
+//   });
+//   return updatedDataset;
+// }
 
-function addDefaultSpace(text, emoji, colour) {
-  const spaceWithText = addStringNoLocale(createThing(), NAME_PREDICATE, text);
-  const spaceWithDate = addDatetime(
-    spaceWithText,
-    CREATED_PREDICATE,
-    new Date()
-  );
-  const spaceWithEmoji = addStringNoLocale(
-    spaceWithDate,
-    TEXT_PREDICATE,
-    emoji
-  );
-  const spaceWithColour = addStringNoLocale(
-    spaceWithEmoji,
-    COLOUR_PREDICATE,
-    colour
-  );
-  return addUrl(spaceWithColour, TYPE_PREDICATE, CATEGORY_CLASS);
-}
+// function addDefaultSpace(text, emoji, colour) {
+//   const spaceWithText = addStringNoLocale(createThing(), NAME_PREDICATE, text);
+//   const spaceWithDate = addDatetime(
+//     spaceWithText,
+//     CREATED_PREDICATE,
+//     new Date()
+//   );
+//   const spaceWithEmoji = addStringNoLocale(
+//     spaceWithDate,
+//     TEXT_PREDICATE,
+//     emoji
+//   );
+//   const spaceWithColour = addStringNoLocale(
+//     spaceWithEmoji,
+//     COLOUR_PREDICATE,
+//     colour
+//   );
+//   return addUrl(spaceWithColour, TYPE_PREDICATE, CATEGORY_CLASS);
+// }

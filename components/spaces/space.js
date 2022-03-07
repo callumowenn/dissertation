@@ -43,7 +43,7 @@ function Space({ thing, index }) {
         </Center>
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
+        <ModalOverlay backdropFilter="blur(10px)" />
         <ModalContent>
           <ModalHeader>🪐 Space</ModalHeader>
           <ModalCloseButton />

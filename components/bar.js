@@ -6,6 +6,7 @@ import { useSession } from '@inrupt/solid-ui-react';
 import Link from 'next/link';
 import { usePodProfile } from '../lib/podProfile';
 import { usePodSpaces } from '../lib/podSpaces';
+import { defaultSpaces } from '../utils/spaces';
 
 function Bar() {
   const { session } = useSession();
@@ -25,15 +26,15 @@ function Bar() {
       zIndex={99}
     >
       <IconButton borderRadius="full" bg="black" icon={<FaSearch />} />
-      <Link href="/">
+      {/* <Link href="/">
         <a>
           <IconButton ml="1" borderRadius="full" bg="black" icon={<FaHome />} />
         </a>
-      </Link>
+      </Link> */}
       <Flex mx="1" grow="1" overflowX="scroll" pos="relative">
         <Flex overflowX="scroll">
           <Flex ml="1">
-            {spaces.map((space) => (
+            {defaultSpaces.concat(spaces).map((space) => (
               <SpaceSelector space={space} />
             ))}
           </Flex>

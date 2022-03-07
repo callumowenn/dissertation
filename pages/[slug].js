@@ -1,6 +1,7 @@
 import { Center, Image } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { usePodGoals } from '../lib/podGoals';
 import { getSpace } from '../utils/spaces';
 
 function Slug() {
@@ -8,33 +9,60 @@ function Slug() {
   const { slug } = router.query;
   const [images, setImages] = useState([]);
   const space = getSpace(slug);
-
-  console.log(space);
+  const { goals } = usePodGoals();
 
   useEffect(() => {
-    space?.interests.forEach((interest, index) => {
-      fetch(
-        `https://api.unsplash.com/search/photos/?client_id=__hsJ7lBhDSp2PtHtz0WKN5FERm5ddGU0yAOBilnkQk&query=${interest}`
-      )
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          }
-          throw response;
-        })
-        .then((data) => {
-          console.log(data);
-          data.results.splice(Math.ceil(space.weightings[index] / 10));
-          console.log(data.results);
-          setImages((state) => {
-            const list = [...state, ...data.results];
-            return list;
+    if (router.query.slug.slice(0, 6) === 'goals-') {
+      goals?.forEach((goal, index) => {
+        fetch(
+          `https://api.unsplash.com/search/photos/?client_id=__hsJ7lBhDSp2PtHtz0WKN5FERm5ddGU0yAOBilnkQk&query=${goal.name}`
+        )
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            }
+            throw response;
+          })
+          .then((data) => {
+            console.log(data);
+            console.log(data.results);
+            setImages((state) => {
+              const list = [...state, ...data.results];
+              return list;
+            });
+          })
+          .catch((error) => {
+            console.log(error);
           });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    });
+      });
+    } else {
+      console.log('interests');
+      console.log(space);
+      space?.interests?.forEach((interest, index) => {
+        fetch(
+          `https://api.unsplash.com/search/photos/?client_id=__hsJ7lBhDSp2PtHtz0WKN5FERm5ddGU0yAOBilnkQk&query=${interest}`
+        )
+          .then((response) => {
+            console.log('got');
+            if (response.ok) {
+              return response.json();
+            }
+            throw response;
+          })
+          .then((data) => {
+            console.log(data);
+            data.results.splice(Math.ceil(space.weightings[index] / 10));
+            console.log(data.results);
+            setImages((state) => {
+              const list = [...state, ...data.results];
+              return list;
+            });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      });
+    }
     return () => {
       setImages([]);
     };
@@ -76,7 +104,7 @@ function Slug() {
         left="50%"
         transform="translate(-50%, -50%)"
       >
-        <Center h="100vh" w="100vw" overflow="scroll" py="24" flexWrap="wrap">
+        <Center h="100vh" w="100vw" overflow="scroll" pb="16" flexWrap="wrap">
           {shuffle(images)?.map((image) => (
             <Image
               borderRadius="2xl"

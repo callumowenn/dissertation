@@ -28,7 +28,7 @@ function AddSpaceButton() {
       />
       {/* popup modal to add interest */}
       <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
+        <ModalOverlay backdropFilter="blur(10px)" />
         <ModalContent overflow="hidden">
           <ModalHeader>🪐 Add Space</ModalHeader>
           <ModalCloseButton />

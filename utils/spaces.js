@@ -2,9 +2,33 @@ import { useSession } from '@inrupt/solid-ui-react';
 import { sha256 } from 'js-sha256';
 import { usePodSpaces } from '../lib/podSpaces';
 
+export const defaultSpaces = [
+  {
+    name: 'Home',
+    emoji: '🏡',
+    colour: '#4CEA89',
+    slug: '/',
+  },
+  {
+    name: 'World',
+    emoji: '🌍',
+    colour: '#4CCCEA',
+    slug: '/world',
+  },
+  {
+    name: 'Goals',
+    emoji: '🏆',
+    colour: '#F6FF0D',
+  },
+];
+
 export function getSpace(slug, path) {
   const { spaces } = usePodSpaces();
-  return spaces.find((space) => slugify(space.name) === slug);
+  return defaultSpaces
+    .concat(spaces)
+    .find((space) =>
+      space.slug ? space.slug === path : slugify(space.name) === slug
+    );
 }
 
 export function slugify(text) {
