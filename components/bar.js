@@ -32,7 +32,7 @@ function Bar() {
       </Link>
       <Flex mx="1" grow="1" overflowX="scroll" pos="relative">
         <Flex overflowX="scroll">
-          <Flex mx="8" my="0">
+          <Flex ml="1">
             {spaces.map((space) => (
               <SpaceSelector space={space} />
             ))}
@@ -41,7 +41,7 @@ function Bar() {
         <Flex
           pointerEvents="none"
           pos="absolute"
-          w="8"
+          w="6"
           h="full"
           zIndex="1"
           bgGradient="linear(to-r, #000000, transparent)"
@@ -50,7 +50,7 @@ function Bar() {
           pointerEvents="none"
           pos="absolute"
           right="0"
-          w="8"
+          w="6"
           h="full"
           bgGradient="linear(to-l, #000000, transparent)"
           zIndex="1"
