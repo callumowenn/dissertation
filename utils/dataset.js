@@ -36,6 +36,25 @@ export async function getOrCreateInterestsList(containerUri, fetch) {
   }
 }
 
+export async function getOrCreatePostsList(containerUri, fetch) {
+  const indexUrl = `${containerUri}index.ttl`;
+  try {
+    const postsList = await getSolidDataset(indexUrl, { fetch });
+    return postsList;
+  } catch (error) {
+    if (error.statusCode === 404) {
+      const postsList = await saveSolidDatasetAt(
+        indexUrl,
+        createSolidDataset(),
+        {
+          fetch,
+        }
+      );
+      return postsList;
+    }
+  }
+}
+
 export async function getOrCreateGoalsList(containerUri, fetch) {
   const indexUrl = `${containerUri}index.ttl`;
   try {
