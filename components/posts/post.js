@@ -4,43 +4,53 @@ import { usePodPosts } from '../../lib/podPosts';
 import { usePodProfile } from '../../lib/podProfile';
 import DeletePostButton from './deletePostButton';
 
-function Post({ thing, index }) {
+function Post({ thing, index, friendPosts, friendName }) {
   const [clicked, setClicked] = useState(false);
   const { name } = usePodProfile();
   const { posts } = usePodPosts();
-  const post = posts[index];
+  const post = friendPosts ? friendPosts[index] : posts[index];
   console.log(post);
 
-  let date = new Date(post.date);
+  let date = new Date(post?.date);
 
   return (
     <Flex
+      transform={
+        friendPosts
+          ? `translate(${
+              Math.random() * 100 * (Math.random() > 0.5 ? -1 : 1)
+            }px, ${Math.random() * 100 * (Math.random() > 0.5 ? -1 : 1)}px)`
+          : null
+      }
+      backdropFilter="blur(30px)"
       shrink="0"
       h="max"
       mr="4"
       p="4"
       borderRadius="3xl"
-      bg="whiteAlpha.50"
+      bg="blackAlpha.300"
       maxW="80"
-      onClick={() => setClicked(!clicked)}
+      onClick={friendPosts ? null : () => setClicked(!clicked)}
+      onMouseEnter={friendPosts ? () => setClicked(!clicked) : null}
+      transition="1s"
     >
-      <Avatar bg="whiteAlpha.400" name={name} />
+      <Avatar bg="whiteAlpha.400" name={friendPosts ? friendName : name} />
       <Flex ml="2" direction="column">
         <Box mb="2">
           <Flex>
-            <Text fontWeight="bold">{name}</Text>
+            <Text fontWeight="bold">{friendPosts ? friendName : name}</Text>
             <Text opacity="0.5" ml="auto">
               {date.toLocaleTimeString().slice(0, -3)}
             </Text>
           </Flex>
           <Text fontWeight="light" opacity="0.8" lineHeight="5">
-            {post.text}
+            {post?.text}
           </Text>
         </Box>
         <Box bg="blackAlpha.300" borderRadius="3xl" overflow="hidden">
-          <img src={`data:image/png;base64,${post.file}`} />
+          <img src={`data:image/png;base64,${post?.file}`} />
         </Box>
-        {clicked ? <DeletePostButton thing={thing} /> : null}
+        {clicked && !friendPosts ? <DeletePostButton thing={thing} /> : null}
       </Flex>
     </Flex>
     // <Button

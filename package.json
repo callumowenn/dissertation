@@ -15,7 +15,7 @@
     "@emotion/styled": "^11.8.1",
     "@inrupt/lit-generated-vocab-common": "^0.3.11",
     "@inrupt/solid-client": "^1.19.0",
-    "@inrupt/solid-ui-react": "^2.7.0",
+    "@inrupt/solid-ui-react": "2.5.1-fixaudit-upgrade-solid-client-1333094642-1096-1634041992.0",
     "formik": "^2.2.9",
     "framer-motion": "^6.2.7",
     "js-sha256": "^0.9.0",

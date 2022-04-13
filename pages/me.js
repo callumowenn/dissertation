@@ -7,6 +7,7 @@ import { usePodProfile } from '../lib/podProfile';
 import PostButton from '../components/postButton';
 import { usePodPosts } from '../lib/podPosts';
 import PostsList from '../components/posts/postsList';
+import FriendsList from '../components/friendsList';
 
 function Me() {
   const { name } = usePodProfile();
@@ -31,6 +32,7 @@ function Me() {
       <InterestsList />
       <GoalsList />
       <PostsList />
+      <FriendsList />
     </Center>
   );
 }
