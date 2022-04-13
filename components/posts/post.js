@@ -1,22 +1,22 @@
-import { Avatar, Box, Button, Center, Flex, Text } from '@chakra-ui/react';
+import { Avatar, Box, Flex, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import { usePodPosts } from '../../lib/podPosts';
 import { usePodProfile } from '../../lib/podProfile';
 import DeletePostButton from './deletePostButton';
 
-function Post({ thing, index, friendPosts, friendName }) {
+function Post({ thing, index, data }) {
   const [clicked, setClicked] = useState(false);
   const { name } = usePodProfile();
   const { posts } = usePodPosts();
-  const post = friendPosts ? friendPosts[index] : posts[index];
-  console.log(post);
+  const post = data ? data : posts[index];
+  console.log(data);
 
   let date = new Date(post?.date);
 
   return (
     <Flex
       transform={
-        friendPosts
+        data
           ? `translate(${
               Math.random() * 100 * (Math.random() > 0.5 ? -1 : 1)
             }px, ${Math.random() * 100 * (Math.random() > 0.5 ? -1 : 1)}px)`
@@ -30,15 +30,15 @@ function Post({ thing, index, friendPosts, friendName }) {
       borderRadius="3xl"
       bg="blackAlpha.300"
       maxW="80"
-      onClick={friendPosts ? null : () => setClicked(!clicked)}
-      onMouseEnter={friendPosts ? () => setClicked(!clicked) : null}
+      onClick={data ? null : () => setClicked(!clicked)}
+      onMouseEnter={data ? () => setClicked(!clicked) : null}
       transition="1s"
     >
-      <Avatar bg="whiteAlpha.400" name={friendPosts ? friendName : name} />
+      <Avatar bg="whiteAlpha.400" name={data ? data.name : name} />
       <Flex ml="2" direction="column">
         <Box mb="2">
           <Flex>
-            <Text fontWeight="bold">{friendPosts ? friendName : name}</Text>
+            <Text fontWeight="bold">{data ? data.name : name}</Text>
             <Text opacity="0.5" ml="auto">
               {date.toLocaleTimeString().slice(0, -3)}
             </Text>
@@ -50,7 +50,14 @@ function Post({ thing, index, friendPosts, friendName }) {
         <Box bg="blackAlpha.300" borderRadius="3xl" overflow="hidden">
           <img src={`data:image/png;base64,${post?.file}`} />
         </Box>
-        {clicked && !friendPosts ? <DeletePostButton thing={thing} /> : null}
+        {clicked && !data ? <DeletePostButton thing={thing} /> : null}
+        <Flex>
+          {post.interests.map((interest) => (
+            <Text fontWeight="bold" fontStyle="italic" mr="2" opacity="0.3">
+              {interest}
+            </Text>
+          ))}
+        </Flex>
       </Flex>
     </Flex>
     // <Button

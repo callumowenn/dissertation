@@ -10,15 +10,15 @@ export const defaultSpaces = [
     slug: '/',
   },
   {
-    name: 'World',
-    emoji: '🌍',
-    colour: '#4CCCEA',
-    slug: '/world',
-  },
-  {
     name: 'Goals',
     emoji: '🏆',
     colour: '#F6FF0D',
+  },
+  {
+    name: 'Friends',
+    emoji: '🕺',
+    colour: '#FF9BDC',
+    slug: '/friends',
   },
 ];
 

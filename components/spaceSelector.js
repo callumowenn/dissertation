@@ -5,22 +5,23 @@ import { slugify } from '../utils/spaces';
 
 function SpaceSelector({ space }) {
   const router = useRouter();
+  console.log(router);
+  function isActive() {
+    if (router.query.code && space.slug === router.pathname) {
+      return true;
+    }
+    if (space.slug === router.asPath) {
+      return true;
+    } else if (router.asPath === `/${slugify(space.name)}`) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   return (
     <Center
-      bg={
-        space.slug === router.asPath
-          ? space.colour
-          : router.asPath === `/${slugify(space.name)}`
-          ? space.colour
-          : `${space.colour}33`
-      }
-      color={
-        space.slug === router.asPath
-          ? ' black'
-          : router.asPath === `/${slugify(space.name)}`
-          ? 'black'
-          : space.colour
-      }
+      bg={isActive() ? space.colour : `${space.colour}33`}
+      color={isActive() ? 'black' : space.colour}
       borderRadius="full"
       overflow="hidden"
       mr="2"

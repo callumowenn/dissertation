@@ -1,5 +1,4 @@
-import { SearchIcon } from '@chakra-ui/icons';
-import { FaHome, FaSearch, FaUserAlt } from 'react-icons/fa';
+import { FaSearch, FaUserAlt } from 'react-icons/fa';
 import { Avatar, Flex, IconButton } from '@chakra-ui/react';
 import SpaceSelector from './spaceSelector';
 import { useSession } from '@inrupt/solid-ui-react';
