@@ -74,7 +74,12 @@ function AddFriendButton() {
                       </FormControl>
                     )}
                   </Field>
-                  <Button colorScheme="blue" mt="2" type="submit">
+                  <Button
+                    colorScheme="blue"
+                    mt="2"
+                    type="submit"
+                    onClick={onClose}
+                  >
                     Add
                   </Button>
                 </Form>
