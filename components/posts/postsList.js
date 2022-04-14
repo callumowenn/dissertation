@@ -1,6 +1,7 @@
 import { Flex, Text } from '@chakra-ui/react';
 import { usePodPosts } from '../../lib/podPosts';
 import Post from './post';
+import PostButton from '../postButton';
 
 function PostsList() {
   const { postThings } = usePodPosts();
@@ -21,6 +22,7 @@ function PostsList() {
       </Flex>
       <Flex w="100vw" overflowX="scroll">
         <Flex ml="8" my="2">
+          <PostButton />
           {postThings?.map(({ thing }, index) => (
             <Post thing={thing} key={index} index={index} />
           ))}

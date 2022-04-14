@@ -4,8 +4,6 @@ import GoalsList from '../components/goals/goalsList';
 import SpacesList from '../components/spaces/spacesList';
 import InterestsList from '../components/interests/interestsList';
 import { usePodProfile } from '../lib/podProfile';
-import PostButton from '../components/postButton';
-import { usePodPosts } from '../lib/podPosts';
 import PostsList from '../components/posts/postsList';
 import FriendsList from '../components/friendsList';
 
@@ -27,11 +25,10 @@ function Me() {
       <Button my="2" colorScheme="purple" size="sm">
         <LogoutButton />
       </Button>
-      <PostButton />
+      <PostsList />
       <SpacesList />
       <InterestsList />
       <GoalsList />
-      <PostsList />
       <FriendsList />
     </Center>
   );

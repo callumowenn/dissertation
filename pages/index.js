@@ -4,7 +4,11 @@ function Home() {
   return (
     <Center h="100vh" flexDirection="column">
       🏡
-      <AvatarGroup max={3} pos="absolute" top="4">
+      <AvatarGroup
+        max={3}
+        pos="fixed"
+        top="calc(1rem + env(safe-area-inset-top))"
+      >
         <Avatar
           bg="yellow.300"
           src="https://gravatar.com/avatar/2f643a7982b8cecd34258aac2ab48ff6?s=400&d=robohash&r=x"

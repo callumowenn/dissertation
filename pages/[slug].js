@@ -95,43 +95,26 @@ function Slug() {
   }
 
   return (
-    <Center
-      display="block"
-      h="100vh"
-      w="100vw"
-      overflow="hidden"
-      position="relative"
-    >
-      <Center
-        position="absolute"
-        w="2000px"
-        h="2000px"
-        top="50%"
-        left="50%"
-        transform="translate(-50%, -50%)"
-      >
-        <Center h="100vh" w="100vw" overflow="scroll" p="4" flexWrap="wrap">
-          {router.query.slug.slice(0, 7) === 'friends'
-            ? friendsPosts?.map(({ thing, data }, index) => (
-                <Post thing={thing} key={index} index={index} data={data} />
-              ))
-            : shuffle(images)?.map((image) => (
-                <Image
-                  borderRadius="2xl"
-                  opacity="0.4"
-                  transition="0.3s"
-                  cursor="pointer"
-                  _hover={{
-                    opacity: 1,
-                  }}
-                  m="4"
-                  w="32"
-                  src={image?.urls?.small}
-                  alt={image?.description}
-                />
-              ))}
-        </Center>
-      </Center>
+    <Center px="2" pb="20" flexWrap="wrap">
+      {router.query.slug.slice(0, 7) === 'friends'
+        ? friendsPosts?.map(({ thing, data }, index) => (
+            <Post thing={thing} key={index} index={index} data={data} />
+          ))
+        : shuffle(images)?.map((image) => (
+            <Image
+              borderRadius="2xl"
+              opacity="0.4"
+              transition="0.3s"
+              cursor="pointer"
+              _hover={{
+                opacity: 1,
+              }}
+              m="4"
+              w="32"
+              src={image?.urls?.small}
+              alt={image?.description}
+            />
+          ))}
     </Center>
   );
 }

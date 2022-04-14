@@ -89,23 +89,27 @@ function PostButton() {
   return (
     <>
       <IconButton
+        bg="blackAlpha.400"
+        color="whiteAlpha.700"
+        p="8"
+        mr="4"
+        borderRadius="2xl"
         icon={<EditIcon />}
         onClick={onOpen}
         size="lg"
-        color="blackAlpha.800"
-        borderRadius="full"
-        backdropFilter="blur(8px)"
+        // color="blackAlpha.800"
+        // borderRadius="full"
         zIndex={99}
-        pos="fixed"
-        bottom="68px"
-        right="2"
-        bgGradient="linear(to-l, #84fab0, #8fd3f4)"
-        _hover={{
-          bgGradient: 'linear(to-l, #84fab0dd, #8fd3f4dd)',
-        }}
-        _active={{
-          bgGradient: 'linear(to-l, #84fab0bb, #8fd3f4bb)',
-        }}
+        // pos="fixed"
+        // bottom="68px"
+        // right="2"
+        // bgGradient="linear(to-l, #84fab0, #8fd3f4)"
+        // _hover={{
+        //   bgGradient: 'linear(to-l, #84fab0dd, #8fd3f4dd)',
+        // }}
+        // _active={{
+        //   bgGradient: 'linear(to-l, #84fab0bb, #8fd3f4bb)',
+        // }}
       >
         Post
       </IconButton>
@@ -115,6 +119,7 @@ function PostButton() {
           borderRadius="0"
           backdropFilter="blur(30px)"
           bg="#00000099"
+          pt="env(safe-area-inset-top)"
         >
           <ModalHeader>
             <Flex w="full">
