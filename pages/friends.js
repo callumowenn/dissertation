@@ -8,7 +8,7 @@ function Friends() {
   const [searchText, setSearchText] = useState();
   console.log(friendsPosts);
   return (
-    <Center px="2" pb="20" flexWrap="wrap">
+    <Center px="2" pb="20" minHeight="100vh" flexWrap="wrap">
       <Input
         placeholder="🔍 Search"
         position="fixed"

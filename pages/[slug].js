@@ -95,7 +95,7 @@ function Slug() {
   }
 
   return (
-    <Center px="2" pb="20" flexWrap="wrap">
+    <Center px="2" pb="20" minHeight="100vh" flexWrap="wrap">
       {router.query.slug.slice(0, 7) === 'friends'
         ? friendsPosts?.map(({ thing, data }, index) => (
             <Post thing={thing} key={index} index={index} data={data} />

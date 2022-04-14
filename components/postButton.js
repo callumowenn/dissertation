@@ -119,10 +119,9 @@ function PostButton() {
           borderRadius="0"
           backdropFilter="blur(30px)"
           bg="#00000099"
-          pt="env(safe-area-inset-top)"
         >
           <ModalHeader>
-            <Flex w="full">
+            <Flex w="full" pt="env(safe-area-inset-top)">
               <Button
                 mr="auto"
                 leftIcon={review ? <ArrowBackIcon /> : null}
