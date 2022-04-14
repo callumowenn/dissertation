@@ -196,7 +196,7 @@ function AddSpaceForm({ space, update }) {
                   {form.values.interests?.map((interest, index) => (
                     <>
                       <Center
-                        bg={getInterestFromName(interest, interests).colour}
+                        bg={getInterestFromName(interest, interests)?.colour}
                         color="black"
                         p="4"
                         w="max"
@@ -205,7 +205,7 @@ function AddSpaceForm({ space, update }) {
                       >
                         <Center pos="relative">
                           <Text zIndex="1" fontWeight="semibold">
-                            {getInterestFromName(interest, interests).name}
+                            {getInterestFromName(interest, interests)?.name}
                           </Text>
                           <Text
                             pos="absolute"
@@ -213,7 +213,7 @@ function AddSpaceForm({ space, update }) {
                             opacity="0.2"
                             fontSize="8xl"
                           >
-                            {getInterestFromName(interest, interests).emoji}
+                            {getInterestFromName(interest, interests)?.emoji}
                           </Text>
                         </Center>
                       </Center>
@@ -262,7 +262,7 @@ function AddSpaceForm({ space, update }) {
                               background: getInterestFromName(
                                 interest,
                                 interests
-                              ).colour,
+                              )?.colour,
                             }}
                           />
                         </SliderTrack>
