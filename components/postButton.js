@@ -119,6 +119,7 @@ function PostButton() {
           borderRadius="0"
           backdropFilter="blur(30px)"
           bg="#00000099"
+          minH="100vh"
         >
           <ModalHeader>
             <Flex w="full">
