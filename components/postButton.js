@@ -121,8 +121,9 @@ function PostButton() {
           bg="#00000099"
         >
           <ModalHeader>
-            <Flex w="full" mt="env(safe-area-inset-top)">
+            <Flex w="full">
               <Button
+                mt="env(safe-area-inset-top)"
                 mr="auto"
                 leftIcon={review ? <ArrowBackIcon /> : null}
                 variant="ghost"
@@ -131,6 +132,7 @@ function PostButton() {
                 {review ? 'Back' : 'Close'}
               </Button>
               <Button
+                mt="env(safe-area-inset-top)"
                 rightIcon={<ArrowForwardIcon />}
                 colorScheme="blue"
                 ml={3}
