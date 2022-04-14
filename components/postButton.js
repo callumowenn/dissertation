@@ -166,8 +166,9 @@ function PostButton() {
                   section="Predicted interests:"
                   elements={[
                     { name: 'Nature', colour: '#B7EB8E', emoji: '🌳' },
-                    { name: 'Interior Design', colour: '#EBCB8E', emoji: '🪴' },
                     { name: 'Art', colour: '#FF6464', emoji: '🎨' },
+                    { name: 'Travel', colour: '#D6BCFA', emoji: '🌍' },
+                    { name: 'Interior Design', colour: '#EBCB8E', emoji: '🪴' },
                     { name: 'Minimalism', colour: '#8EEBEB', emoji: '🌱' },
                   ]}
                   state={interests}

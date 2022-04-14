@@ -17,22 +17,21 @@ function Post({ thing, index, data }) {
     <Flex
       transform={
         data
-          ? `translate(${
-              Math.random() * 100 * (Math.random() > 0.5 ? -1 : 1)
-            }px, ${Math.random() * 100 * (Math.random() > 0.5 ? -1 : 1)}px)`
+          ? `translateX(${
+              Math.random() * 80 * (Math.random() > 0.5 ? -1 : 1)
+            }px)`
           : null
       }
       backdropFilter="blur(30px)"
       shrink="0"
       h="max"
+      my={data ? '4' : null}
       mr="4"
       p="4"
       borderRadius="3xl"
       bg="blackAlpha.300"
       maxW="80"
       onClick={data ? null : () => setClicked(!clicked)}
-      onMouseEnter={data ? () => setClicked(!clicked) : null}
-      transition="1s"
     >
       <Avatar bg="whiteAlpha.400" name={data ? data.name : name} />
       <Flex ml="2" direction="column">
@@ -47,7 +46,7 @@ function Post({ thing, index, data }) {
             {post?.text}
           </Text>
         </Box>
-        <Box bg="blackAlpha.300" borderRadius="3xl" overflow="hidden">
+        <Box borderRadius="3xl" overflow="hidden">
           <img src={`data:image/png;base64,${post?.file}`} />
         </Box>
         {clicked && !data ? <DeletePostButton thing={thing} /> : null}
